@@ -11,100 +11,15 @@ module.exports = {
     // 102 có lỗi xảy ra, không có gì được thay đổi
     // 103 không tìm thấy dữ liệu trong database
 
-    // t
-    add: async (req, res) => {
-        res.status(200);
-        let code = 103, message = 'error';
-        try {
-            let { mark } = req.param('data');
-            for (let i = 0; i < mark.subjectGroups.length; i++) {
-                try {
-                    let sg = await SubjectGroup.findOne({ id: mark.subjectGroups[i] });
-                    if (!sg) {
-                        return res.json({ code, message });
-                    }
-                } catch (error) {
-                    code = 101;
-                    return res.json({ code, message });
-                }
-            }
-            mark.subjectGroups = JSON.stringify(mark.subjectGroups);
-            let major = await Major.findOne({ id: mark.major });
-            let school = await School.findOne({ id: mark.school });
-            if (major && school) {
-                let s = await Mark.create(mark).fetch();
-                if (s) {
-                    code = 200;
-                    message = 'success';
-                } else {
-                    code = 102;
-                }
-            }
-        } catch (error) {
-            code = 101;
-        }
-        return res.json({ code, message });
-    },
-
-    delete: async (req, res) => {
-        res.status(200);
-        let code = 101, message = 'error', { id } = req.param('data');
-        if (id) {
-            let rs = await Mark.destroy({ id: id }).fetch();
-            if (rs && rs.length !== 0) {
-                code = 200;
-                message = 'success';
-            } else {
-                code = 102;
-            }
-        }
-        return res.json({ code, message });
-    },
-
-    // t
-    update: async (req, res) => {
-        res.status(200);
-        let code = 103, message = 'error';
-        try {
-            let { mark } = req.param('data');
-            for (let i = 0; i < mark.subjectGroups.length; i++) {
-                try {
-                    let sg = await SubjectGroup.findOne({ id: mark.subjectGroups[i] });
-                    if (!sg) {
-                        return res.json({ code, message });
-                    }
-                } catch (error) {
-                    code = 101;
-                    return res.json({ code, message });
-                }
-            }
-            mark.subjectGroups = JSON.stringify(mark.subjectGroups);
-            let major = await Major.findOne({ id: mark.major });
-            let school = await School.findOne({ id: mark.school });
-            if (major && school) {
-                let s = await Mark.update({ id: mark.id }, mark).fetch();
-                if (s) {
-                    code = 200;
-                    message = 'success';
-                } else {
-                    code = 102;
-                }
-            }
-        } catch (error) {
-            code = 101;
-        }
-        return res.json({ code, message });
-    },
-
+   
     // /mark/getall/:page
     getAll: async (req, res) => {
         res.status(200);
         let code = 200, message = 'success', data = undefined, { page } = req.param('data') || 1;
-        let {status} = req.param('data');
         let {school} = req.param ('data');
         let {major}  = req.param('data');
         let {year} = req.param('data');
-        let list = await Mark.find({status: status, school : school, major :major, year:year}).sort([{mark:'DESC' }]).limit(11).skip((page - 1) * 10).populate('major').populate('school').populate('status');
+        let list = await Mark.find({school : school, major :major, year:year}).sort([{mark:'DESC' }]).limit(11).skip((page - 1) * 10).populate('major').populate('school');
         if (list.length > 10) {
             data = {
                 list: list.slice(0, 10),
@@ -128,6 +43,28 @@ module.exports = {
         return res.json({ code, message, data });
     },
 
+    // /mark/getone/:year
+    getOne: async (req, res) => {
+        res.status(200);
+        let code = 103, message = 'error', data = undefined, { year } = req.param('data') || 1;
+        data = await Mark.findOne({ year : year });
+        if (data) {
+            code = 200;
+            message = 'success';
+        }
+        return res.json({ code, message, data });
+    },
+// /mark/getone/:id
+    getOne: async (req, res) => {
+        res.status(200);
+        let code = 103, message = 'error', data = undefined, { id } = req.param('data') || 1;
+        data = await Mark.findOne({ id: id });
+        if (data) {
+            code = 200;
+            message = 'success';
+        }
+        return res.json({ code, message, data });
+    },
     // /mark/getone/:id
     getOne: async (req, res) => {
         res.status(200);
@@ -139,7 +76,6 @@ module.exports = {
         }
         return res.json({ code, message, data });
     },
-
     updateStatus: async (req, res) => {
         res.status(200);
         let code = 403, message = 'error';

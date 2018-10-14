@@ -39,19 +39,5 @@ module.exports = {
         }
     },
 
-    beforeDestroy: (criteria, proceed) => {
-        School.find(criteria).populate('majors').exec((err, rs) => {
-            if (err) {
-                return proceed(err);
-            }
-            rs.forEach(school => {
-                school.majors.forEach(async el => {
-                    await Major.destroy({id: el.id});
-                });
-            });
-            return proceed();
-        });
-    }
-
 };
 

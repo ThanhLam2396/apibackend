@@ -32,78 +32,52 @@ module.exports.routes = {
         view: 'test'
     },
 
-    'POST /major/add': 'major.add',
-    'POST /major/delete': 'major.delete',
-    'POST /major/update': 'major.update',
-    'POST /major/getall': 'major.getAll',
-    'POST /major/getone': 'major.getOne',
-    'POST /major/getallinschool': 'major.getAllInSchool',
-    'POST /major/updatestatus': 'major.updateStatus',
+    
+    // 'POST /major/getall': 'major.getAll',
+    // 'POST /major/getone': 'major.getOne',
+    // 'POST /major/getallinschool': 'major.getAllInSchool',
+   
 
-    'POST /mark/add': 'mark.add',
-    'POST /mark/delete': 'mark.delete',
-    'POST /mark/update': 'mark.update',
-    'POST /mark/getall': 'mark.getAll',
-    'POST /mark/getone': 'mark.getOne',
-    'POST /mark/updatestatus': 'mark.updateStatus',
-
-    'POST /province/add': 'province.add',
-    'POST /province/delete': 'province.delete',
-    'POST /province/update': 'province.update',
-    'POST /province/getall': 'province.getAll',
-    'POST /province/getone': 'province.getOne',
-    'POST /province/updatestatus': 'province.updateStatus',
-
-    'POST /school/add': 'school.add',
-    'POST /school/delete': 'school.delete',
-    'POST /school/update': 'school.update',
-    'POST /school/getall': 'school.getAll',
-    'POST /school/getone': 'school.getOne',
-    'POST /school/updatestatus': 'school.updateStatus',
+    
+    // 'POST /mark/getall': 'mark.getAll',
+    // 'POST /mark/getone': 'mark.getOne',
     
 
-    'POST /sector/add': 'sector.add',
-    'POST /sector/delete': 'sector.delete',
-    'POST /sector/update': 'sector.update',
-    'POST /sector/getall': 'sector.getAll',
-    'POST /sector/getone': 'sector.getOne',
-    'POST /sector/updatestatus': 'sector.updateStatus',
+    
+    'POST /province/getall': 'province.getAll',
+    'POST /province/getone': 'province.getOne',
+   
 
-    'POST /subject/add': 'subject.add',
-    'POST /subject/delete': 'subject.delete',
-    'POST /subject/update': 'subject.update',
-    'POST /subject/getall': 'subject.getAll',
-    'POST /subject/getone': 'subject.getOne',
-    'POST /subject/updatestatus': 'subject.updateStatus',
+    'POST /school/getall': 'school.getAll',
+    'POST /school/getonecode': 'school.getOneCode',
+    'POST /school/getonename': 'school.getOneName',
+    
+   
+    
 
-    'POST /subjectgroup/add': 'subjectGroup.add',
-    'POST /subjectgroup/delete': 'subjectGroup.delete',
-    'POST /subjectgroup/update': 'subjectGroup.update',
-    'POST /subjectgroup/getall': 'subjectGroup.getAll',
-    'POST /subjectgroup/getone': 'subjectGroup.getOne',
-    'POST /subjectgroup/updatestatus': 'subjectgroup.updateStatus',
+   
+    // 'POST /sector/getall': 'sector.getAll',
+    // 'POST /sector/getone': 'sector.getOne',
+  
 
-    'POST /user/add': 'user.add',
-    'POST /user/delete': 'user.delete',
-    'POST /user/update': 'user.update',
-    'POST /user/getall': 'user.getAll',
-    'POST /user/getone': 'user.getOne',
-    'POST /user/login': 'user.login',
-    'POST /user/logout': 'user.logout',
-    'POST /user/updatestatus': 'user.updateStatus',
+    // 'POST /subject/getall': 'subject.getAll',
+    // 'POST /subject/getone': 'subject.getOne',
+    
 
-    'POST /role/add': 'role.add',
-    'POST /role/delete': 'role.delete',
-    'POST /role/update': 'role.update',
-    'POST /role/getall': 'role.getAll',
-    'POST /role/getone': 'role.getOne',
-    'POST /role/updatestatus': 'role.updateStatus',
+   
+    // 'POST /subjectgroup/getall': 'subjectGroup.getAll',
+    // 'POST /subjectgroup/getone': 'subjectGroup.getOne',
+  
 
-    'POST /status/add': 'status.add',
-    'POST /status/delete': 'status.delete',
-    'POST /status/update': 'status.update',
-    'POST /status/getall': 'status.getAll',
-    'POST /status/getone': 'status.getOne',
+    
+    // 'POST /user/getall': 'user.getAll',
+    // 'POST /user/getone': 'user.getOne',
+    // 'POST /user/login': 'user.login',
+    // 'POST /user/logout': 'user.logout',
+    // 'POST /user/updatestatus': 'user.updateStatus',
+
+   
+
 
     /***************************************************************************
     *                                                                          *
